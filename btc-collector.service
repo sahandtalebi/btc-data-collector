@@ -1,0 +1,17 @@
+[Unit]
+Description=Bitcoin Data Collector Service
+After=network.target
+
+[Service]
+User=YOUR_USERNAME
+WorkingDirectory=/home/YOUR_USERNAME/PycharmProjects/btc
+ExecStart=/usr/bin/python3 /home/YOUR_USERNAME/PycharmProjects/btc/btc_collector_service.py
+Restart=on-failure
+RestartSec=60s
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=btc-collector
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target 
